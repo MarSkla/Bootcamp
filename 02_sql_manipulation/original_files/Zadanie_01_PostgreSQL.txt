@@ -1,0 +1,59 @@
+CREATE TABLE pracownicy (
+	id SERIAL PRIMARY KEY,
+	imie VARCHAR(15) NOT NULL,
+	nazwisko VARCHAR(30) NOT NULL,
+	wiek SMALLINT NOT NULL CHECK(wiek>10),
+	kurs VARCHAR(50) NOT NULL
+	);
+
+INSERT INTO pracownicy (imie, nazwisko, wiek, kurs)
+VALUES
+	('Anna','Nowak','34','DS'),
+	('Roman','Kowalski','42','DS'),
+	('Tomasz','Wiśniewski','33','DS'),
+	('Agata','Wójcik','43','DS'),
+	('Elżbieta','Kowalczyk','28','Java'),
+	('Przemysław','Kamiński','34','Java'),
+	('Robert','Lewandowski','35','Java'),
+	('Radosław','Zieliński','38','Java'),
+	('Anna','Woźniak','26','Java'),
+	('Robert','Szymański','34','Java'),
+	('Radosław','Dąbrowski','35','UX'),
+	('Robert','Kozłowski','38','UX'),
+	('Joanna','Mazur','26','UX'),
+	('Radosław','Jankowski','27','UX'),
+	('Patryk','Lewandowski','28','Tester'),
+	('Patryk','Zieliński','28','Tester'),
+	('Andrzej','Woźniak','31','Tester'),
+	('Andrzej','Lewandowski','30','Tester'),
+	('Roman','Zieliński','39','Tester'),
+	('Ewa','Wożniak','31','Tester');
+
+SELECT *
+FROM pracownicy
+WHERE wiek > '30';
+
+SELECT *
+FROM pracownicy
+WHERE wiek < '30';
+
+SELECT *
+FROM pracownicy
+WHERE nazwisko LIKE 'K%ki';
+
+ALTER TABLE pracownicy
+RENAME COLUMN id TO nr;
+
+SELECT *
+FROM pracownicy
+WHERE nr IS NULL
+OR imie IS NULL
+OR nazwisko IS NULL
+OR wiek IS NULL
+OR kurs IS NULL;
+
+SELECT *
+FROM pracownicy
+WHERE kurs = 'Java';
+
+

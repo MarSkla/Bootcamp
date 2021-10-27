@@ -1,0 +1,89 @@
+/*
+1. Wybrałem wersje aktualizacji bazy stworzonej w Zadaniu 1 i już wcześniej zmodyfikowanej w Zadaniach 2 - 4.
+*/
+
+ALTER TABLE pracownicy
+RENAME szkolenie TO kurs;
+
+UPDATE  pracownicy AS p SET
+	nr = d.nr,
+	imie = d.imie,
+	nazwisko = d.nazwisko,
+	wiek = d.wiek,
+	kurs = d.kurs
+FROM (VALUES
+	(1,'Anna', 'Nowak' , 34, 'DS'),
+	(2,'Roman ', 'Kowalski' , 42, 'DS'),
+	(3,'Tomasz', 'Wiśniewski' , 33, 'DS'),
+	(4,'Anna', NULL , 43, 'DS'),
+	(5,'Elżbieta', 'Kowalczyk' , NULL, 'Tester'),
+	(6,'Przemysław', 'Kowalczyk' , NULL, 'Java'),
+	(7,'Robert', 'Kowalczyk' , NULL, 'Java'),
+	(8,'Radosław', 'Zieliński' , NULL, 'Java'),
+	(9, NULL, 'Woźniak' , NULL, 'Java'),
+	(10,'Robert', 'Szymański' , 34, 'Tester'),
+	(11,'Radosław', 'Dąbrowski' , 35, NULL),
+	(12,'Robert', 'Kozłowski' , NULL, 'UX'),
+	(13,'Joanna', 'Mazur' , 28, 'UX'),
+	(14,'Radosław', 'Jankowski' , 27, 'UX'),
+	(15,'Patryk', 'Lewandowski' , 28, NULL),
+	(16, NULL, 'Zieliński' , 28, NULL),
+	(17,'Andrzej', 'Woźniak' , 31, NULL),
+	(18,'Andrzej', 'Lewandowski' , 30, NULL),
+	(19,'Roman', 'Kowalczyk', 39, NULL),
+	(20,'Ewa', 'Woźniak' , 31, NULL)
+) AS d(nr, imie, nazwisko, wiek, kurs)
+WHERE d.nr = p.nr;
+
+/*
+polecenie brzmi: "Wyświetl listę pracowników wg kolumny Imię eliminując powtarzające się pozycje".
+Jeżeli chodzi o listę niepowtarzających się imion, kwerenda będzie:
+*/
+SELECT DISTINCT imie
+FROM pracownicy
+ORDER BY imie;
+
+/*
+jeżeli w poleceniu chodzi o listę pracowników eliminując rekordy które w całości się powtarzają, wtedy kwerenda będzie:
+*/
+SELECT DISTINCT *
+FROM pracownicy
+ORDER BY imie;
+
+/* kwerenda eliminująca powtarzajace się imie i nazwisko: */
+SELECT DISTINCT imie, nazwisko
+FROM pracownicy
+ORDER BY imie;
+
+/*podobnie z poleceniem nr 2: Wyświetl listę pracowników wg kolumny Nazwisko eliminując powtarzające się pozycje*/
+SELECT DISTINCT nazwisko
+FROM pracownicy
+ORDER BY nazwisko;
+
+/*
+jeżeli w poleceniu chodzi o listę pracowników eliminując rekordy które w całości się powtarzają, wtedy kwerenda będzie:
+
+	SELECT DISTINCT *
+	FROM pracownicy
+	ORDER BY nazwisko;
+
+kwerenda eliminująca powtarzajace się imie i nazwisko:
+	SELECT DISTINCT imie, nazwisko
+	FROM pracownicy
+	ORDER BY nazwisko;
+*/
+
+SELECT DISTINCT kurs
+FROM pracownicy
+WHERE nazwisko = 'Kowalczyk';
+
+SELECT *
+FROM pracownicy
+WHERE wiek IS NULL;
+
+SELECT wiek
+FROM pracownicy
+WHERE imie = 'Patryk';
+
+ALTER TABLE pracownicy
+RENAME TO mentorzy;

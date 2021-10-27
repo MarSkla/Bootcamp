@@ -1,0 +1,72 @@
+
+INSERT INTO pracownicy (nr, imie, nazwisko, wiek, kurs)
+VALUES
+	(1,'Anna', 'Nowak' , 34, 'DS'),
+	(2,'Roman ', 'Kowalski' , 42, 'DS'),
+	(3,'Tomasz', 'Wiśniewski' , 33, 'DS'),
+	(4,'Anna', NULL , 43, 'DS'),
+	(5,'Elżbieta', 'Kowalczyk' , NULL, 'Tester'),
+	(6,'Anna', 'Kowalczyk' , NULL, 'Java'),
+	(7,'Robert', 'Kowalczyk' , NULL, 'Java'),
+	(8,'Radosław', 'Zieliński' , NULL, 'Java'),
+	(9, 'Robert', 'Woźniak' , NULL, 'Java'),
+	(10,'Robert', 'Szymański' , 34, 'Tester'),
+	(11,'Radosław', 'Dąbrowski' , 35, NULL),
+	(12,'Robert', 'Kozłowski' , NULL, 'UX'),
+	(13,'Joanna', 'Mazur' , 26, 'UX'),
+	(14,'Radosław', 'Jankowski' , 27, 'UX'),
+	(15,'Patryk', 'Lewandowski' , 28, NULL),
+	(16, NULL, 'Zieliński' , 28, NULL),
+	(17,'Andrzej', 'Woźniak' , 31, NULL),
+	(18,'Andrzej', 'Lewandowski' , 30, NULL),
+	(19,'Roman', 'Kowalczyk', 39, NULL),
+	(20,'Ewa', 'Woźniak' , 31, NULL)
+ON DUPLICATE KEY UPDATE nr=VALUES(nr),
+	imie=VALUES(imie),
+	nazwisko=VALUES(nazwisko),
+	wiek=VALUES(wiek),
+	kurs=VALUES(kurs);
+
+/*
+zakładam, że w poleceniu chodzi o wyświetlenie niepowtarzających się imion, w kolejności alfabetycznej
+*/
+SELECT DISTINCT imie
+FROM pracownicy
+ORDER BY imie;
+
+/*
+podobnie jak powyżej, zakładam, że w poleceniu chodzi o wyświetlenie niepowtarzających się nazwisk, w kolejności alfabetycznej
+*/
+SELECT DISTINCT nazwisko
+FROM pracownicy
+ORDER BY nazwisko;
+
+SELECT DISTINCT kurs
+FROM pracownicy
+WHERE nazwisko = 'kowalczyk';
+
+SELECT *
+FROM pracownicy
+WHERE wiek IS NULL;
+
+SELECT wiek
+FROM pracownicy
+WHERE imie = 'Patryk'
+
+ALTER TABLE pracownicy
+RENAME TO mentorzy;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+

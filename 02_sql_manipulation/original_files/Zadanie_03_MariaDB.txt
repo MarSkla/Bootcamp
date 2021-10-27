@@ -1,0 +1,64 @@
+/*
+1. Wybrałem wersje aktualizacji bazy stworzonej w Zadaniu 1 i wcześniej zmienionej w Zadaniu 2 - zamiast "UPDATE" jest "INSERT" z eliminacją duplikatów.
+2. Odwrotność "IS NOT NULL" z PostgreSQL nie działa - nie znalazłem odpowiednika bez wymieniania nazw wszystkich kolumn, użyłem standardowego "OR"
+*/
+
+
+INSERT INTO pracownicy (nr, imie, nazwisko, wiek, kurs)
+VALUES
+	(1,'Anna', 'Nowak' , 34, 'DS'),
+	(2,'Roman ', 'Kowalski' , 42, 'DS'),
+	(3,'Tomasz', 'Wiśniewski' , 33, 'DS'),
+	(4,'Agata', 'Wójcik' , 43, 'DS'),
+	(5,'Elżbieta', 'Kowalczyk' , 28, 'Java'),
+	(6,'Przemysław', 'Kowalczyk' , 34, 'Java'),
+	(7,'Robert', 'Kowalczyk' , 35, 'Java'),
+	(8,'Radosław', 'Zieliński' , 38, 'Java'),
+	(9, NULL, 'Woźniak' , 26, 'Java'),
+	(10,'Robert', 'Szymański' , 34, 'Java'),
+	(11,'Radosław', 'Dąbrowski' , 35, NULL),
+	(12,'Robert', 'Kozłowski' , NULL, 'UX'),
+	(13,'Joanna', 'Mazur' , 28, 'UX'),
+	(14,'Radosław', 'Jankowski' , 27, 'UX'),
+	(15,'Patryk', 'Lewandowski' , 28, 'Tester'),
+	(16, NULL, 'Zieliński' , 28, 'Tester'),
+	(17,'Andrzej', 'Woźniak' , 31, 'Tester'),
+	(18,'Andrzej', 'Lewandowski' , 30, 'Tester'),
+	(19,'Roman', 'Kowalczyk', 39, 'Tester'),
+	(20,'Ewa', 'Woźniak' , 31, 'Tester')
+ON DUPLICATE KEY UPDATE nr=VALUES(nr),
+	imie=VALUES(imie),
+	nazwisko=VALUES(nazwisko),
+	wiek=VALUES(wiek),
+	kurs=VALUES(kurs);
+
+
+SELECT *
+FROM pracownicy
+WHERE
+ nazwisko LIKE 'Kowalczyk';
+
+SELECT *
+FROM pracownicy
+WHERE
+ wiek BETWEEN 30 AND 40;
+
+SELECT *
+FROM pracownicy
+WHERE
+ nazwisko NOT LIKE '%and%';
+
+SELECT *
+FROM pracownicy
+WHERE
+ nr BETWEEN 1 AND 7;
+
+SELECT  *
+FROM pracownicy
+WHERE
+ nr IS NULL OR imie IS NULL OR nazwisko IS NULL OR wiek IS NULL OR kurs IS NULL;
+
+SELECT *
+FROM pracownicy
+WHERE
+ kurs IS NULL;

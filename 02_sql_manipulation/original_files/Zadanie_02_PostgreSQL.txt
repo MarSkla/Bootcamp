@@ -1,0 +1,73 @@
+/*
+1. Wybrałem wersje aktualizacji bazy stworzonej w Zadaniu 1.
+2. Żeby wykonać zadanie i wprowadzić rekordy z brakującymi danymi, musiałem usunąć constraint "NOT NULL" i "CHECK" w przypadku atrybutu "wiek".
+*/
+
+ALTER TABLE pracownicy
+ALTER COLUMN imie DROP NOT NULL,
+ALTER COLUMN nazwisko DROP NOT NULL,
+ALTER COLUMN wiek DROP NOT NULL,
+ALTER COLUMN kurs DROP NOT NULL;
+
+
+UPDATE  pracownicy AS p SET
+	nr = d.nr,
+	imie = d.imie,
+	nazwisko = d.nazwisko,
+	wiek = d.wiek,
+	kurs = d.kurs
+FROM (VALUES
+	(1,'Anna', 'Nowak' , 34, 'DS'),
+	(2,'Roman ', 'Kowalski' , 42, 'DS'),
+	(3,'Tomasz', 'Wiśniewski' , 33, 'DS'),
+	(4,'Agata', 'Wójcik' , 43, 'DS'),
+	(5,'Elżbieta', 'Kowalczyk' , 28, 'Java'),
+	(6,'Przemysław', NULL , 34, 'Java'),
+	(7,'Robert', NULL , 35, 'Java'),
+	(8,'Radosław', 'Zieliński' , 38, 'Java'),
+	(9, NULL, 'Woźniak' , 26, 'Java'),
+	(10,'Robert', 'Szymański' , 34, 'Java'),
+	(11,'Radosław', 'Dąbrowski' , 35, NULL),
+	(12,'Robert', 'Kozłowski' , NULL, 'UX'),
+	(13,'Joanna', 'Mazur' , 28, 'UX'),
+	(14,'Radosław', 'Jankowski' , 27, 'UX'),
+	(15,'Patryk', 'Lewandowski' , 28, 'Tester'),
+	(16, NULL, 'Zieliński' , 28, 'Tester'),
+	(17,'Andrzej', 'Woźniak' , 31, 'Tester'),
+	(18,'Andrzej', 'Lewandowski' , 30, 'Tester'),
+	(19,'Roman', NULL, 39, 'Tester'),
+	(20,'Ewa', 'Woźniak' , 31, 'Tester')
+) AS d(nr, imie, nazwisko, wiek, kurs)
+WHERE d.nr = p.nr
+
+SELECT *
+FROM pracownicy
+WHERE
+ wiek = 28;
+
+SELECT *
+FROM pracownicy
+WHERE
+ wiek <= 30;
+
+SELECT *
+FROM pracownicy
+WHERE
+ nazwisko LIKE '%ski';
+
+SELECT *
+FROM pracownicy
+WHERE
+ nr IN (1,4,7,18,20);
+
+SELECT  *
+FROM pracownicy
+WHERE
+ nr IS NOT NULL AND imie IS NOT NULL AND nazwisko IS NOT NULL AND wiek IS NOT NULL AND kurs IS NOT NULL;
+
+SELECT *
+FROM pracownicy
+WHERE
+ kurs <>'DS';
+
+
