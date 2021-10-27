@@ -1,0 +1,50 @@
+CREATE DATABASE School_Coding;
+
+USE School_Coding;
+
+CREATE TABLE Mentors (
+    id INTEGER PRIMARY KEY,
+    Imie TEXT NOT NULL,
+    Nazwisko TEXT NOT NULL,
+    Specjalizacja TEXT NOT NULL,
+    Data_zatrudnienia DATE NOT NULL,
+    Data_zwolnienia DATE DEFAULT '9999-12-31'
+);
+
+INSERT INTO Mentors (id, Imie, Nazwisko, Specjalizacja, Data_zatrudnienia, Data_Zwolnienia)
+VALUES
+    (1, 'Jan', 'Kowalski', 'SQL', '2012-01-13','2019-04-15'),
+    (2, 'Marek', 'Nowakowski', 'CSS', '2015-07-01','2020-12-12'),
+    (3, 'Halina', 'Balbina', 'HTML', '2017-04-05','2019-03-19'),
+    (4, 'Malwina', 'Rakoczy', 'R','2015-03-31','2017-04-30'),
+    (5, 'Johnny', 'Mnemonic', 'C#', '1995-03-01','2012-09-30'),
+    (6, 'Beatrix','Kiddo','Java','1994-01-01','2020-06-30'),
+    (7, 'Hattori','Hanzo','C++','1990-05-01','2000-12-31'),
+    (8, 'Lando','Calrissian','JavaScript','2002-07-01','2009-11-15'),
+    (9,'Boba','Fett','Basic','1986-05-31','1999-09-30'),
+    (10,'Glenn','Danzig','Python','1992-01-27','1998-07-13');
+SELECT * FROM Mentors;
+
+UPDATE Mentors
+SET Nazwisko='Bravo'
+WHERE id=5;
+
+SELECT * FROM Mentors
+WHERE id=5;
+
+UPDATE Mentors
+SET Nazwisko='Karataka'
+WHERE id=9;
+
+SELECT * FROM Mentors
+WHERE id=9;
+
+ALTER TABLE Mentors
+ADD Wynagrodzenie DECIMAL(6,2);
+
+UPDATE Mentors
+SET Wynagrodzenie=1000
+WHERE id BETWEEN 1 AND 3;
+
+SELECT * FROM Mentors
+WHERE ID BETWEEN 1 AND 3;

@@ -1,0 +1,32 @@
+CREATE DATABASE moje_zainteresowania
+
+CREATE TABLE public.zainteresowania (
+	id SERIAL PRIMARY KEY,
+	nazwa VARCHAR(50) NOT NULL,
+	opis VARCHAR(255) NOT NULL,
+	data_realizacji SMALLINT CHECK(data_realizacji <= '2025')
+/*nie wybrałem DATE jako rodzaju danych ze względu na konieczność określenia dnia i miesiąca*/
+
+/*po wyświetleniu tabeli py rodzaju danych "smallint' wartość pojawi się z "," rozdzielającym tysiąc od setek ale zostawiam ze względu na późniejsze możliwe operacje zwikszanie/zminiejszanie wartości*/
+);
+
+INSERT INTO zainteresowania (nazwa, opis)
+VALUES
+    ('analiza', 'zalezności pomiędzy i predykcja'),
+    ('technologia','nowe idee'),
+    ('łażenie', 'Beskidy: Wyspowy + Niski'),
+    ('bieganie', 'Budapest Half-Marathon poniżej 1:55.00'),
+    ('audio', 'hi-end');
+
+SELECT * FROM zainteresowania;
+
+INSERT INTO zainteresowania (nazwa, opis, data_realizacji) VALUES ('stolice', 'Barcelona', '2022');
+
+SELECT * FROM zainteresowania;
+
+DELETE FROM zainteresowania
+WHERE nazwa IS null
+OR opis IS null
+OR data_realizacji IS NULL;
+
+SELECT * FROM zainteresowania;

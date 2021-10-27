@@ -1,0 +1,40 @@
+CREATE DATABASE lista_prezentow
+
+USE lista_prezentow;
+
+CREATE TABLE prezenty_2021 (
+    id INTEGER PRIMARY KEY,
+    imie_obdarowanego TEXT NOT NULL,
+    pomysl_na_prezent VARCHAR (100) NOT NULL,
+    cena NUMERIC(5,2) NOT NULL DEFAULT (100) CHECK (cena <= 150),
+    miejsce_zakupu VARCHAR(100) NOT NULL
+    );
+
+INSERT INTO prezenty_2020 (id, imie_obdarowanego, pomysl_na_prezent, cena, miejsce_zakupu)
+VALUES
+    (1,'Marian', 'rekawiczki', 100 , 'Wittchen'),
+    (2,'Krystyna', 'ogrzewacz', 80 , 'Grzejnicza 5/8; Cieplisko'),
+    (3,'Hipolit', 'skarpety x 4', 120, 'Kasztanowa 500; Szwecjowisko'),
+    (4,'Natasha', 'komin + czapka', 150, 'Szewska 4 m 18; Wełnisko'),
+    (5,'CD Projekt', 'Jak zarządzać wizerunkiem firmy w czasie kryzysu', '89.99', 'https://www.swiatksiazki.pl/');
+
+SELECT * FROM prezenty_2020
+
+UPDATE prezenty_2020
+SET pomysl_na_prezent = 'rower'
+WHERE id = 3;
+
+SELECT * FROM prezenty_2020
+WHERE id = 3;
+
+DELETE FROM prezenty_2020
+WHERE id = 1;
+
+
+SELECT * FROM prezenty_2020;
+
+ALTER TABLE prezenty_2020 DROP COLUMN miejsce_zakupu;
+
+SELECT imie_obdarowanego FROM prezenty_2020
+WHERE id BETWEEN 3 AND 5
+ORDER BY id ASC;

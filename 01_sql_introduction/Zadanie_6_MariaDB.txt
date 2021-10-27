@@ -1,0 +1,31 @@
+
+
+CREATE DATABASE moje_zainteresowania;
+
+USE moje_zainteresowania;
+
+CREATE TABLE zainteresowanie (
+    id INTEGER AUTO_INCREMENT,
+    nazwa VARCHAR(50) NOT NULL,
+    opis VARCHAR(255) NOT NULL,
+    data_realizacji YEAR CHECK (data_realizacji<='2025')
+);
+
+INSERT INTO zainteresowanie (nazwa, opis)
+VALUES
+    ('analiza', 'zalezności pomiędzy i predykcja'),
+    ('technologia','nowe idee'),
+    ('łażenie', 'Beskidy: Wyspowy + Niski'),
+    ('bieganie', 'Budapest Half-Marathon poniżej 1:55.00'),
+    ('audio', 'hi-end');
+
+SELECT * FROM zainteresowanie;
+
+INSERT INTO zainteresowanie (nazwa, opis, data_realizacji) VALUES ('stolice', 'Barcelona', '2022');
+
+SELECT * FROM zainteresowanie;
+
+DELETE FROM zainteresowanie WHERE nazwa OR opis OR data_realizacji IS NULL;
+/*dodanie atrybutu "id" do warunku, spowoduje usunięcie wszystkich wierszy pomimo "AUTO_INCREMENT" i automatycznego przypisywania wartości atrybutu "id" */
+
+SELECT * FROM zainteresowanie;

@@ -1,0 +1,73 @@
+
+
+
+CREATE DATABASE lista_pracownikow;
+
+USE lista_pracownikow;
+
+CREATE TABLE pracownicy (
+    id SERIAL PRIMARY KEY,
+    imie TEXT NOT NULL,
+    nazwisko TEXT NOT NULL,
+    stanowisko VARCHAR(50) NOT NULL,
+    dzial VARCHAR(50) NOT NULL
+    );
+
+NSERT INTO pracownicy (imie, nazwisko, stanowisko, dzial)
+VALUES
+    ('Jan','Kowalski','Manager','HR'),
+    ('Anna','Nowak','VP','Compliance'),
+    ('Martyna', 'Rozmaryna','Assistant','Administration'),
+    ('Marek','Piegus','Specialist','Operations'),
+    ('Hipolit','Kwass','Senior Manager','Internal Audit'),
+    ('Karina','Kataryna','intern','IT');
+
+SELECT * FROM pracownicy;
+
+ALTER TABLE pracownicy ADD data_zatrudnienia DATE NOT NULL DEFAULT(currentdate);
+/*
+w postgresql musiałem dodać domyslną wartość ze względu na constraint "not null" który uniemożliwiał dodanie kolumny dla rekordów już istniejących w bazie bez wartości dla tego atrybutu
+*/
+
+INSERT INTO pracownicy (imie, nazwisko, stanowisko, dzial, data_zatrudnienia)
+    VALUES ('Helmut','Kohl','Chairman','Supervisory Board','2020-12-20');
+
+
+SELECT * FROM pracownicy;
+
+/*
+kiedy w DBeaver (baza postgresql) próbowałem poniższego rozwiązania, które działa z MariaDB , pojawiał się komunikat:
+"SQL Error [42804]: ERROR: column "data_zatrudnienia" is of type date but expression is of type text"
+kiedy wpisywałem update dla każdego rekordu osobno i nie ruszałem znaków pojedynczego cytowania, nie było problemu, dane się aktualizowały 
+
+UPDATE pracownicy
+SET data_zatrudnienia = CASE id
+    WHEN 1 THEN '2015-03-03'
+    WHEN 2 THEN '2010-01-01'
+    WHEN 3 THEN '2019-06-01'
+    WHEN 4 THEN '2017-10-31'
+    WHEN 5 THEN '2000-02-01'
+    WHEN 6 THEN '2020-11-15'
+END
+WHERE id BETWEEN 1 AND 6;
+*/
+
+UPDATE pracownicy
+SET data_zatrudnienia = '2015-03-03' WHERE id = 1;
+
+UPDATE pracownicy
+SET data_zatrudnienia = '2010-01-01' WHERE id = 2;
+
+UPDATE pracownicy
+SET data_zatrudnienia = '2019-06-01' WHERE id = 3;
+
+UPDATE pracownicy
+SET data_zatrudnienia = '2017-10-31' WHERE id = 4;
+
+UPDATE pracownicy
+SET data_zatrudnienia = '2000-02-01' WHERE id = 5;
+
+UPDATE pracownicy
+SET data_zatrudnienia = '2020-11-15' WHERE id = 6;
+
+SELECT * FROM pracownicy;

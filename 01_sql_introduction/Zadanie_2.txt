@@ -1,0 +1,48 @@
+CREATE DATABASE kurs_fc
+USE kurs_fc
+CREATE TABLE Biblioteczka (
+ id INTEGER NOT NULL UNIQUE,
+ Tytuł TEXT,
+ Data_zakupu DATE )
+INSERT INTO Biblioteczka (id, Tytuł, Data_zakupu)
+ VALUES (001, 'Kajko i Kokosz', 1985-06-01); /*tutaj dostałem błąd że wartość 1978 jest nieprawidłowa*/
+INSERT INTO Biblioteczka (id, Tytuł, Data_zakupu)
+ VALUES (001, 'Kajko i Kokosz', '1985-06-01')
+SELECT * FROM Biblioteczka
+INSERT INTO Biblioteczka (id, Tytuł, Data_zakupu)
+ VALUES (2, 'Lux perpetua', '2006-06-01')
+INSERT INTO Biblioteczka (id, Tytuł, Data_zakupu)
+ VALUES (3, 'Filary Ziemi', '1995-06-01')
+SELECT * from Biblioteczka
+UPDATE Biblioteczka
+ SET Tytuł = 'Nad Niemnem', Data_zakupu = ''
+ WHERE id = 1; /*tutaj dostałem komentarz, że jest błąd w składni dla „Data_Zakupu” - nie wprowadzałem daty, ponieważ założyłem, że książki nie kupowałem tylko np. pozyczyłem */
+ALTER TABLE Biblioteczka
+ MODIFY Data_zakupu DATE NULL 
+UPDATE Biblioteczka
+ SET Tytuł = 'Nad Niemnem', Data_zakupu = ''
+ WHERE id = 1; /*błąd o składni po „Data_zakupu”*/
+UPDATE Biblioteczka
+ SET Tytuł = 'Nad Niemnem', Data_zakupu = NULL
+ WHERE id = 1
+SELECT * FROM Biblioteczka
+ALTER TABLE Biblioteczka
+ ADD Autor TEXT
+SELECT * FROM Biblioteczka
+UPDATE Biblioteczka
+ SET Autor = 'Eliza Orzeszkowa'
+ WHERE Tytuł = 'Nad Niemnem'
+SELECT * FROM Biblioteczka
+UPDATE Biblioteczka
+ SET Autor = 'Andrzej Sapkowski'
+ WHERE Tytuł = 'Lux perpetua'
+UPDATE Biblioteczka
+ SET Autor = 'Ken Follett'
+ WHERE Tytuł = 'Filary Ziemi'
+SELECT * FROM Biblioteczka
+DELETE FROM Biblioteczka
+ WHERE id = (2,3); /*nieudana proba skasowania dwóch rekordów jednocześnie*/
+DELETE FROM Biblioteczka
+ WHERE id (2,3);/* również nieudana, wiem że brakuje „IN” pomiędzy „id” i „(2,3)”*/
+DELETE FROM Biblioteczka WHERE id >=2
+SELECT * FROM Biblioteczka
