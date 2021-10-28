@@ -1,20 +1,33 @@
-print('\nexercise_02.py:\n\tprint all prime numbers lower then given argument')
+print('\nexercise_02.py:\n\tprint all prime numbers lower then argument given')
+print()  # empty line for better readability
 
 
 def prime_numbers(num):
-    if not isinstance(num, int):
-        print('try with integer')
-    elif num <= 0:
-        print('try with positive number')
-    elif num == 1:
-        print(f'{num} is not a prime number')
-    else:
+    print(f'check for "prime_numbers({num})"')
+    try:
+        if isinstance(num, float):
+            num = int(num//1)
+        isinstance(num, int)
+        if num <= 1:
+            print('\ttry with positive number larger than 1')
         for x in range(2, num):
             for y in range(2, x):
                 if x % y == 0:
                     break
             else:
-                print(x)
+                print(f'\t{x}')
+    except TypeError:
+        print(f'\tError: wrong function argument type - use "int" or "float"')
+    finally:
+        print('\n\tscript end\n')
 
 
-prime_numbers(17)
+prime_numbers(7.5)
+
+prime_numbers('a')
+
+prime_numbers(-3)
+
+prime_numbers(0)
+
+prime_numbers(1)
