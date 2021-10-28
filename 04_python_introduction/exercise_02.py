@@ -21,13 +21,17 @@ def prime_numbers(num):
     finally:
         print('\n\tscript end\n')
 
-
-prime_numbers(7.5)
-
-prime_numbers('a')
+prime_numbers(20)
 
 prime_numbers(-3)
 
+prime_numbers(7.5)
+
 prime_numbers(0)
+
+prime_numbers('a')
+
+
+
 
 prime_numbers(1)
