@@ -1,21 +1,25 @@
 print('\nexercise_03.py:\n\tsort list elements in descending order')
 # Python has standard sorted() function and .sort() method (lists only)
-# however I will try to build my own function with same result as sorted()
+# however I do intend to build my own function with same result as sorted()
+# sorting in order set by ASCII table
+
 print()  # empty line for better readability
 
 
 def sorting(lst):
-    print(lst)
-    for idx in range(1, len(lst)):
-        for idx_next in range(idx - 1):
-            # print('idx: ', idx, 'type: ', type(idx))
-            # print('lst[idx - 1]: ', lst[idx - 1], 'type: ', type(lst[idx + 1]))
-            # print('lst[idx]: ', lst[idx], 'type: ', type(lst[idx]))
-            if lst[idx] < lst[idx - 1]:
-                lst[idx], lst[idx_next] = lst[idx_next], lst[idx]
-    print('lst sorted?: ', lst)
+    for first_index in range(len(lst)):
+        for second_index in range(first_index):
+            if lst[second_index] > lst[first_index]:
+                lst[first_index], lst[second_index] = lst[second_index], \
+                                                      lst[first_index]
+    return lst
 
 
-x = [1, 3, 0, 2, 4, 5]
+test_case = [[1, 3, 0, 2, 4, 5], ['c', 'e', 'g', 'a', 'f'], ['c', 'E', 'g',
+                                                             'A', 'F']]
+test_no = 1
 
-sorting(x)
+for case_lst in test_case:
+    print(f'test no. {test_no} for list:\n\t {case_lst}')
+    print('result:\n\t', sorting(case_lst), '\n')
+    test_no += 1
