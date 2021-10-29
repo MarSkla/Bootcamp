@@ -20,13 +20,19 @@ def sorting(lst, direction='asc'):
     return lst
 
 
-# test_case = [[1, 3, -4, 2, 4, 5], ['c', 'e', 'g', 'a', 'f'], ['c', 'E', 'g',
-#                                                              'A', 'F']]
-# test_no = 1
-#
-# for case_lst in test_case:
-#     print(f'test no. {test_no} for list:\n\t {case_lst}')
-#     print('result:\n\t', sorting(case_lst), '\n')
-#     test_no += 1
+test_case = [[[1, 3, -4, 2, 4, 5]], [['c', 'e', 'g', 'a', 'f']],
+             [['c', 'E', 'g', 'A', 'F']], [[1, 3, -4, 2, 4, 5], 'dsc'],
+             [['c', 'e', 'g', 'a', 'f'], 'dsc'], [['c', 'E', 'g', 'A', 'F'],
+                                                  'dsc']]
 
-print(sorting([1, 3, -4, 2, 4, 5], 'dsc'))
+test_no = 1
+
+for case_lst in test_case:
+    if len(case_lst) == 1:
+        print(f'test no. {test_no} for list:\n\t {case_lst}')
+        print('result:\n\t', sorting(case_lst), '\n')
+        test_no += 1
+    elif len(case_lst) == 2:
+        print(f'test no. {test_no} for list:\n\t {case_lst}')
+        print('result:\n\t', sorting(case_lst[0], case_lst[1]), '\n')
+        test_no += 1
