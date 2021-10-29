@@ -18,7 +18,11 @@ def unique_vls(lst_a, lst_b):
     return unique_lst
 
 
-a = [1, 2, 3, 'a', 'c']
-b = ['a', 'b', 'c', 'd', 4]
+test_case = [[[1, 2, 3, 'a', 'c'], ['a', 'b', 'c', 'd', 4]],
+             [['z', 11, 'gcz', 0.3], [11, 15, '0ab', 'z']]]
 
-print(unique_vls(a, b))
+test_num = 1
+for lists in test_case:
+    print(f'test no.{test_num} for {lists}:'
+          f'\n\t{unique_vls(lists[0], lists[1])}\n')
+    test_num += 1
