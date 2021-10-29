@@ -5,15 +5,20 @@ print('\nexercise_04.py:\n\tbuild a function that returns a list of unique '
 
 print()  # empty line for better readability
 
-def unique_vals(lst_a, lst_b):
-      temp_lst = [lst_a, lst_b]
-      print(temp_lst)
-      unique_lst = []
-      for element in lst_a:
-            if element
+
+def unique_vls(lst_a, lst_b):
+    temp_lst = [lst_a, lst_b]
+    unique_lst = []
+    for lst in temp_lst:
+        lst_index = temp_lst.index(lst)
+        other_lst = temp_lst[len(temp_lst) - lst_index - 1]
+        for element in lst:
+            if element not in other_lst:
+                unique_lst.append(element)
+    return unique_lst
+
 
 a = [1, 2, 3, 'a', 'c']
 b = ['a', 'b', 'c', 'd', 4]
 
-# print(a + b)
-unique_vals(a, b)
+print(unique_vls(a, b))
