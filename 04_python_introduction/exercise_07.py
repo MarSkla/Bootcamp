@@ -3,6 +3,7 @@ print('\nexercise_07.py:\n\tbuild function that count letters and numeric '
 print()  # empty line for better readability
 
 test_phrase = '1klaw$5 ~gr(:t'
+print(f'test phrase: {test_phrase}\n')
 
 
 def count_char(str):
