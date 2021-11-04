@@ -16,9 +16,13 @@ print(f'Test case:\n\tFirst list: \t{lst_a}\n\tSecond list: \t{lst_b}')
 
 temp_list = [num for num in lst_a if num not in lst_b]
 temp_dict = {k: temp_list.count(k) for k in temp_list}
+sorted_dict = dict(sorted(temp_dict.items()))  # final list will be ascending
+print(f'sorted_dict: {sorted_dict}')
 
 def sorted_unique(lst_1, lst_2):
-    return sorted(temp_dict, key=temp_dict.get)
+    final_List = sorted(sorted_dict, key=sorted_dict.get)
+    return final_List
+
 
 
 print(f'\nReturned list: {sorted_unique(lst_a, lst_b)}')
@@ -28,4 +32,3 @@ check_info = input('\nWould you like to check? (y/n): ')
 if check_info == 'y':
     for key, value in temp_dict.items():
         print(f'\tNum {key} occurs {value} times in First list')
-
