@@ -14,11 +14,18 @@ lst_a = [random.randint(0, 10) for lst_a_item in range(20)]
 lst_b = [random.randint(0, 5) for lst_b_item in range(10)]
 print(f'Test case:\n\tFirst list: \t{lst_a}\n\tSecond list: \t{lst_b}')
 
+temp_list = [num for num in lst_a if num not in lst_b]
+temp_dict = {k: temp_list.count(k) for k in temp_list}
 
 def sorted_unique(lst_1, lst_2):
-    temp_list = [num for num in lst_1 if num not in lst_2]
-    temp_dict = {k: temp_list.count(k) for k in temp_list}
     return sorted(temp_dict, key=temp_dict.get)
 
 
 print(f'\nReturned list: {sorted_unique(lst_a, lst_b)}')
+
+check_info = input('\nWould you like to check? (y/n): ')
+
+if check_info == 'y':
+    for key, value in temp_dict.items():
+        print(f'\tNum {key} occurs {value} times in First list')
+
