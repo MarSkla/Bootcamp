@@ -9,4 +9,4 @@ Initially, all excercises were divided into single repositories, which names ref
 In result, structure grew to ten repositories and my GitHub lost clarity.
 This is why I decided to move all files/projects to single repo with subfolders.
 
-I promised myself to try rewrite them when I get more advanced knowledge. Thus some files (maybe even all of them, in future) may be created after Apr'21.
+I promised myself to try and rewrite them to more advanced code when I get more knowledge. Thus some files (maybe even all of them, in future) may be created after Apr'21.
