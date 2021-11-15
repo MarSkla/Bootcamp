@@ -12,10 +12,10 @@ class Diary:
         print('Provide file name:\t\t', self.file)
 
     def add_text(self):
-        a = open(self.file, 'at')
-        a.write(input('Please share your thoughts:'))
-        a.write('\n')
-        a.close
+        with open(self.file, 'at') as d:
+            d.write(input('Please share your thoughts:'))
+            d.write('\n')
+
 
     def read_diary(self):
         a = open(self.file, 'r')
