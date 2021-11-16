@@ -12,6 +12,23 @@ class Song:
         print(*self.list, sep="\n")
         
         
-song1 = Song(["jakis tekst", "jakiś tekst 2", "jakiś tekst 3"])
+# song1 = Song(["jakis tekst", "jakiś tekst 2", "jakiś tekst 3"])
+#
+# song1.sing()
 
-song1.sing()
+
+class Song_alternative:
+
+
+    def __init__(self):
+        self.rows_num = int(input("How many rows would you like to add? : "))
+        self.song_text = [input("Add text: ") for x in range(self.rows_num)]
+
+    def sing_alternative(self):
+        print(*self.song_text, sep="\n")
+        # print(self.song_text)
+
+
+piosenka = Song_alternative()
+
+piosenka.sing_alternative()
