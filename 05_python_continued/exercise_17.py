@@ -16,7 +16,11 @@ class Triangle():
         answer = ''
         if result == 180:
             answer = "They may constitute triangle"
-            print(start_statement, result)
         else:
             answer = "These tree angles will not create triangle"
+        print(start_statement, result)
         print(answer)
+
+triangle1 = Triangle(15, 45, 100)
+
+triangle1.check_angles()
