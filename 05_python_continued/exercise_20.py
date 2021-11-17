@@ -3,7 +3,7 @@ print("\nexercise_20.py:\n\tBuild Class 'Vector' accepting two arguments "
       end="\n\n")
 
 # aware import should be at top of the file, left here with premeditation
-from math import sqrt, pow
+from math import sqrt, pow, hypot
 
 
 class Vector:
@@ -18,10 +18,17 @@ class Vector:
         self.sqrt = sqrt
 
     def length(self):
-        self.vector_len = self.sqrt(pow(self.move_x, 2) + pow(self.move_y, 2))
-        print("Vector length: ", round(self.vector_len, 2))
+        vector_len = self.sqrt(pow(self.move_x, 2) + pow(self.move_y, 2))
+        print("Vector length: ", vector_len)
 
+    def length_aut(self):
+        result = hypot((self.move_x),(self.move_y))
+        print("Vector length (math.hypo): ", result)
 
 test = Vector((3, 4), (-6, 7))
+#
+# test.length()
+#
+# test.length_aut()
 
-test.length()
+print("Equal?  ", (test.length() == test.length_aut()))
