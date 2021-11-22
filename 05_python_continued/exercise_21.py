@@ -13,10 +13,13 @@ class Polygon:
     def __init__(self):
         self.coordinates = []
         self.sides_num = int(input("How many sides your polygon will have? : "))
-        for _ in range(self.sides_num):
-            self.vector = input("Provide coordinates (a1,b1,a2,b2): ")
-            self.vector = [int(x) for x in self.vector.split(",")]
-            self.coordinates.append(self.vector)
+        if self.sides_num > 2:
+            for _ in range(self.sides_num):
+                self.vector = input("Provide coordinates (a1,b1,a2,b2): ")
+                self.vector = [int(x) for x in self.vector.split(",")]
+                self.coordinates.append(self.vector)
+        else:
+            print("At least 3 sides are needed to create a polygon")
 
     def vectors_lengths(self):
         vector_len = []
