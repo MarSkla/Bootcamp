@@ -14,10 +14,13 @@ class Polygon:
         self.coordinates = []
         self.sides_num = int(input("How many sides your polygon will have? : "))
         if self.sides_num > 2:
-            for _ in range(self.sides_num):
+            while len(self.coordinates) < 3:
                 self.vector = input("Provide coordinates (a1,b1,a2,b2): ")
-                self.vector = [int(x) for x in self.vector.split(",")]
-                self.coordinates.append(self.vector)
+                if self.vector.count(",") == 3:
+                    self.vector = [int(x) for x in self.vector.split(",")]
+                    self.coordinates.append(self.vector)
+                else:
+                    print("Provide all 4 coordinates (a1,b1,a2,b2)!")
         else:
             print("At least 3 sides are needed to create a polygon")
 
@@ -32,16 +35,12 @@ class Polygon:
         perimeter = self.vectors_lengths()
         print("Perimeter: ", sum(perimeter))
 
-    # def print_in(self):
-    #     print("vector: ", self.vector)
-    #     print("coordinates: ", self.coordinates)
-    #     print("int coordinates: ", )
-
 
 figure = Polygon()
 
 # figure.print_in()
 
-print(figure.vectors_lengths())
+print("Vectors lengths are: ", *figure.vectors_lengths(), sep="\n\t")
 
 figure.perimeter_cal()
+
