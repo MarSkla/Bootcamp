@@ -4,7 +4,6 @@ print("\nexercise_22.py:\n\tBuild abstract base class Animal. Constructor is "
       "has to print string build as value returned by 'sound' extended by "
       "name of the animal and type of the animal.", end="\n\n")
 
-
 from abc import ABC, abstractmethod  # left here with premeditation
 
 
@@ -23,7 +22,6 @@ class Animal(ABC):
 
 
 class Dog(Animal):
-
     animal_type = 'dog'
 
     def sound(self):
@@ -31,7 +29,6 @@ class Dog(Animal):
 
 
 class Cat(Animal):
-
     animal_type = 'cat'
 
     def sound(self):
@@ -39,7 +36,6 @@ class Cat(Animal):
 
 
 class Horse(Animal):
-
     animal_type = 'horse'
 
     def sound(self):
@@ -47,5 +43,13 @@ class Horse(Animal):
 
 
 tequila = Dog('Tequila')
-
 tequila.greeting()
+print()
+
+gin = Cat('Gin the Cat')
+gin.greeting()
+print()
+
+spirit = Horse('Spirit')
+spirit.greeting()
+
