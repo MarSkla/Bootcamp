@@ -51,8 +51,6 @@ data = data.sort_values(by=['surname', 'year_ob'], ignore_index=True)
 # experience: Junior (experience up to 3y), Mid (from 4 to 8), Senior (from 9
 # to 12) and Expert (13+)
 
-# data.info()
-
 def experience(x):
     if x <= 3:
         return 'Junior'
@@ -66,4 +64,16 @@ def experience(x):
 
 data['exp_desc'] = data['years_experience'].apply(experience)
 
+# print(data)
+
+# -----------------------------------------
+
+# exercise_06: there are null values in column 'year_work_start'. Fill
+# lacking data with average for experience range defined in previous task
+
+data['year_work_start'] = data['year_work_start'].fillna(data.groupby(
+    'exp_desc')['year_work_start'].transform('mean').round(0))
+
 print(data)
+
+# -----------------------------------------
