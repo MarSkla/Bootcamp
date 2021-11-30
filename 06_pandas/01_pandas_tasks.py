@@ -24,8 +24,15 @@ most_common_surname = data.value_counts('surname')
 # exercise_03:
 # add 'sex' column after 'surname' representing sex of the person
 
-data.insert(2, 'sex', data.name.apply(lambda x: 'female' if x[-1] == 'a' else
+data.insert(2, 'sex', data['name'].apply(lambda x: 'female' if x[-1] == 'a' else
                                                 'male'))
 
+# print(data.iloc[:, :5])
 
-print(data.iloc[:, :5])
+# exercise_04:
+# sort data according to surname and year of birth for the same surnames
+
+print(data.columns.tolist())
+data = data.sort_values(by=['surname', 'year_ob'], ignore_index=True)
+
+print(data)
