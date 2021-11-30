@@ -77,3 +77,13 @@ data['year_work_start'] = data['year_work_start'].fillna(data.groupby(
 print(data)
 
 # -----------------------------------------
+
+# exercise_07: which branch employs the most Data Scientists?
+
+print(data[['department', 'branch_city']].groupby([data['department'] ==
+                                                   'Data Science',
+                                                   'branch_city']).count())
+
+# ans: Krakow
+
+# -----------------------------------------
