@@ -80,9 +80,9 @@ data['year_work_start'] = data['year_work_start'].fillna(data.groupby(
 
 # exercise_07: which branch employs the most Data Scientists?
 
-print(data[['department', 'branch_city']].groupby([data['department'] ==
-                                                   'Data Science',
-                                                   'branch_city']).count())
+# print(data[['department', 'branch_city']].groupby([data['department'] ==
+#                                                    'Data Science',
+#                                                    'branch_city']).count())
 
 
 
@@ -95,9 +95,18 @@ print(data[['department', 'branch_city']].groupby([data['department'] ==
 # 'Data Science' -> 'Data Analytics'
 
 data['department'] = data['department']\
-                        .replace({'Software Development': 'Software '
-                                                          'Development Team',
+                        .replace({'Software Development': 'Software Development'
+                                                          ' Team',
                                   'HR': 'Human Resources',
                                   'Data Science': 'Data Analytics'})
 
-print(data)
+# print(data)
+
+# -----------------------------------------
+
+# exercise_09: which city does employ most people on Senior level
+
+print(data[['branch_city', 'exp_desc']].groupby([data['exp_desc'] == 'Senior',
+                                                'branch_city']).count())
+
+# ans: Krakow
