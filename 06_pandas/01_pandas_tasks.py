@@ -115,9 +115,18 @@ data['department'] = data['department']\
 
 # exercise_10: which city employs the most women on junor level
 
-print(data[['branch_city', 'sex', 'exp_desc']][data['sex'] == 'female']
-      .groupby(['exp_desc','branch_city']).count())
+# print(data[['branch_city', 'sex', 'exp_desc']][data['sex'] == 'female']
+#       .groupby(['exp_desc', 'branch_city']).count())
 
 # ans: there is no Junior females in dataset
 
+#  alternative solution for female & Seniors
+# print(data[['branch_city', 'sex']]
+#       [(data['sex'] == 'female') & (data['exp_desc'] == 'Senior')]
+#       .groupby('branch_city').count())
+
+
+
+
+# -----------------------------------------
 
