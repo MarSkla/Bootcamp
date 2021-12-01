@@ -74,7 +74,7 @@ data['exp_desc'] = data['years_experience'].apply(experience)
 data['year_work_start'] = data['year_work_start'].fillna(data.groupby(
     'exp_desc')['year_work_start'].transform('mean').round(0))
 
-print(data)
+# print(data)
 
 # -----------------------------------------
 
@@ -84,6 +84,20 @@ print(data[['department', 'branch_city']].groupby([data['department'] ==
                                                    'Data Science',
                                                    'branch_city']).count())
 
+
+
 # ans: Krakow
 
 # -----------------------------------------
+
+# exercise_08: rename departments according to the below: 'Software
+# Development' -> 'Software Development Team', 'HR' -> 'Human Resources',
+# 'Data Science' -> 'Data Analytics'
+
+data['department'] = data['department']\
+                        .replace({'Software Development': 'Software '
+                                                          'Development Team',
+                                  'HR': 'Human Resources',
+                                  'Data Science': 'Data Analytics'})
+
+print(data)
