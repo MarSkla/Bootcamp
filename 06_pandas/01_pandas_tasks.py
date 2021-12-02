@@ -129,11 +129,25 @@ data['department'] = data['department']\
 
 # exercise_11: how many women born before 1975 is employed in Krakow office at
 # mid level?
-print(data)
 
-print(data.iloc[:, :2]
-      [(data['sex'] == 'female') & (data['year_ob'] < 1975)
-       & (data['branch_city'] == 'Krakow') & (data['exp_desc'] == 'Mid')])
+# print(data.iloc[:, :2]
+#       [(data['sex'] == 'female') & (data['year_ob'] < 1975)
+#        & (data['branch_city'] == 'Krakow') & (data['exp_desc'] == 'Mid')])
 
 # ans: there are no women at Mid level that work in Kraków and was born
 # before 1975
+
+# -----------------------------------------
+
+# exercise_12: How many Seniors joined the company not later than 10 years ago
+
+# internal info:
+print(data.groupby((data['exp_desc'] == 'Senior')
+                   & (data['year_work_start'] >= 2011))
+      .count())
+
+# alternative way - delivers data e.r. to report
+print(data[(data['exp_desc'] == 'Senior')
+           &(data['year_work_start'] >= 2011)]
+      .shape[0])
+
