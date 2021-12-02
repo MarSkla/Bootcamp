@@ -125,8 +125,15 @@ data['department'] = data['department']\
 #       [(data['sex'] == 'female') & (data['exp_desc'] == 'Senior')]
 #       .groupby('branch_city').count())
 
-
-
-
 # -----------------------------------------
 
+# exercise_11: how many women born before 1975 is employed in Krakow office at
+# mid level?
+print(data)
+
+print(data.iloc[:, :2]
+      [(data['sex'] == 'female') & (data['year_ob'] < 1975)
+       & (data['branch_city'] == 'Krakow') & (data['exp_desc'] == 'Mid')])
+
+# ans: there are no women at Mid level that work in Kraków and was born
+# before 1975
