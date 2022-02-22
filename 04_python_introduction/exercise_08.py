@@ -16,6 +16,7 @@ def palindromes(string_1, string_2):
         arrays_lst[arrays_lst.index(element)] = ''.join(char for char in
                                                         element if
                                                         char.isalnum())
+
     if arrays_lst[0][::-1] == arrays_lst[1]:
         print('They are palindromes')
     else:
